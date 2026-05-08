@@ -44,11 +44,7 @@ const KanbanColumn = ({ status, title, tasks }) => {
         <span className="kanban-column__count">{tasks.length}</span>
       </div>
 
-      <div
-        className="kanban-column__content"
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-      >
+      <div className="kanban-column__content" onDragOver={handleDragOver} onDrop={handleDrop}>
         {tasks.length === 0 ? (
           <div className="kanban-column__empty">
             <p>No tasks yet</p>
@@ -63,10 +59,7 @@ const KanbanColumn = ({ status, title, tasks }) => {
               onDragOver={handleDragOver}
               onDrop={handleDrop}
             >
-              <TaskCard
-                task={task}
-                onDragStart={handleDragStart}
-              />
+              <TaskCard task={task} onDragStart={handleDragStart} />
             </div>
           ))
         )}

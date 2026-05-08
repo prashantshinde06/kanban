@@ -193,13 +193,14 @@ const kanbanSlice = createSlice({
           return indexes;
         }, []);
 
-        const insertIndex = statusIndexes.length === 0
-          ? state.tasks.length
-          : newIndex <= 0
+        const insertIndex =
+          statusIndexes.length === 0
+            ? state.tasks.length
+            : newIndex <= 0
             ? statusIndexes[0]
             : newIndex >= statusIndexes.length
-              ? statusIndexes[statusIndexes.length - 1] + 1
-              : statusIndexes[newIndex];
+            ? statusIndexes[statusIndexes.length - 1] + 1
+            : statusIndexes[newIndex];
 
         state.tasks.splice(insertIndex, 0, movedTask);
       } else {
@@ -216,7 +217,7 @@ const kanbanSlice = createSlice({
       const { status, tasks } = action.payload;
       const statusTasks = state.tasks.filter((task) => task.status === status);
       const nonStatusTasks = state.tasks.filter((task) => task.status !== status);
-      
+
       state.tasks = [...nonStatusTasks, ...tasks];
     },
 

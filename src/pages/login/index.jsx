@@ -5,11 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import login from "@/assets/images/logos/login.png";
 
-import {
-  initialValues,
-  validationSchema,
-  setSession
-} from "./login-utils";
+import { initialValues, validationSchema, setSession } from "./login-utils";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -23,10 +19,7 @@ const Login = () => {
     formikRef.current?.resetForm();
   }, []);
 
-  const handleLogin = async ({
-    values,
-    setSubmitting
-  }) => {
+  const handleLogin = async ({ values, setSubmitting }) => {
     try {
       setLoading(true);
       setLoginError(null);
@@ -37,7 +30,7 @@ const Login = () => {
       // TEMP MOCK API (since loginApi missing)
       const response = {
         token: "dummy-token",
-        user: { email: values.email }
+        user: { email: values.email },
       };
 
       console.log("API Response:", response);
@@ -45,10 +38,8 @@ const Login = () => {
       setSession(response);
 
       navigate("/dashboard");
-
     } catch (error) {
-      const message =
-        error?.message || error?.toString() || "Login failed";
+      const message = error?.message || error?.toString() || "Login failed";
 
       console.log("Login Error:", error);
 
@@ -74,7 +65,7 @@ const Login = () => {
               setLoading,
               setLoginError,
               navigate,
-              dispatch
+              dispatch,
             })
           }
         >
@@ -104,9 +95,7 @@ const Login = () => {
                 <ErrorMessage name="password" component="div" className="error" />
               </div>
 
-              {loginError && (
-                <div className="error mt-[10px]">{loginError}</div>
-              )}
+              {loginError && <div className="error mt-[10px]">{loginError}</div>}
 
               <button
                 type="submit"

@@ -5,7 +5,8 @@ export const calculateServerSideSerialNumber = (pageIndex, pageSize, rowIndex) =
 
 // Generate badge Tailwind classes based on status
 export const generateBadgeClassName = (status) => {
-  if (!status) return "inline-block px-3 py-1 rounded text-xs font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800";
+  if (!status)
+    return "inline-block px-3 py-1 rounded text-xs font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-800";
 
   const normalized = status.toLowerCase().trim();
 

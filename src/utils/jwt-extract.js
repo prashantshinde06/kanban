@@ -1,10 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  addKanbanTask,
-  editKanbanTask,
-  closeModal,
-} from "@/redux/slices/kanban.slice";
+import { addKanbanTask, editKanbanTask, closeModal } from "@/redux/slices/kanban.slice";
 
 import { TASK_STATUSES } from "@/_helpers/constants";
 import { useFormik } from "formik";
@@ -21,26 +17,19 @@ const KanbanModal = ({ isOpen, task }) => {
 
   // Validation Schema
   const validationSchema = Yup.object({
-    title: Yup.string()
-      .trim()
-      .required("Task title is required"),
+    title: Yup.string().trim().required("Task title is required"),
 
-    description: Yup.string()
-      .trim()
-      .required("Description is required"),
+    description: Yup.string().trim().required("Description is required"),
 
-    status: Yup.string()
-      .required("Status is required"),
+    status: Yup.string().required("Status is required"),
 
-    priority: Yup.string()
-      .required("Priority is required"),
+    priority: Yup.string().required("Priority is required"),
 
     dueDate: Yup.date()
       .required("Due date is required")
       .min(minDate, "Due date must be tomorrow or later"),
 
-    assignee: Yup.string()
-      .required("Assignee is required"),
+    assignee: Yup.string().required("Assignee is required"),
   });
 
   // Formik
@@ -52,8 +41,7 @@ const KanbanModal = ({ isOpen, task }) => {
       priority: task?.priority || "medium",
       dueDate: task?.dueDate || "",
       assignee: task?.assignee || "",
-      createdAt:
-        task?.createdAt || new Date().toISOString(),
+      createdAt: task?.createdAt || new Date().toISOString(),
     },
 
     enableReinitialize: true,
@@ -91,60 +79,30 @@ const KanbanModal = ({ isOpen, task }) => {
   if (!isOpen) return null;
 
   // Dynamic Error Class
-  const getFieldClassName = (
-    fieldName,
-    baseClass
-  ) => {
-    const hasError =
-      formik.touched[fieldName] &&
-      formik.errors[fieldName];
+  const getFieldClassName = (fieldName, baseClass) => {
+    const hasError = formik.touched[fieldName] && formik.errors[fieldName];
 
-    return `${baseClass} ${
-      hasError
-        ? "kanban-modal__input--error"
-        : ""
-    }`;
+    return `${baseClass} ${hasError ? "kanban-modal__input--error" : ""}`;
   };
 
   return (
-    <div
-      className="kanban-modal-overlay"
-      onClick={handleClose}
-    >
-      <div
-        className="kanban-modal"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="kanban-modal-overlay" onClick={handleClose}>
+      <div className="kanban-modal" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="kanban-modal__header">
-          <h2 className="kanban-modal__title">
-            {task
-              ? "Edit Task"
-              : "Create New Task"}
-          </h2>
+          <h2 className="kanban-modal__title">{task ? "Edit Task" : "Create New Task"}</h2>
 
-          <button
-            className="kanban-modal__close"
-            onClick={handleClose}
-          >
+          <button className="kanban-modal__close" onClick={handleClose}>
             ✕
           </button>
         </div>
 
         {/* Form */}
-        <form
-          className="kanban-modal__form"
-          onSubmit={formik.handleSubmit}
-          noValidate
-        >
+        <form className="kanban-modal__form" onSubmit={formik.handleSubmit} noValidate>
           {/* Title */}
           <div className="kanban-modal__group">
-            <label
-              className="kanban-modal__label"
-              htmlFor="title"
-            >
-              Title{" "}
-              <span className="required">*</span>
+            <label className="kanban-modal__label" htmlFor="title">
+              Title <span className="required">*</span>
             </label>
 
             <input
@@ -152,32 +110,22 @@ const KanbanModal = ({ isOpen, task }) => {
               id="title"
               name="title"
               placeholder="Enter task title"
-              className={getFieldClassName(
-                "title",
-                "kanban-modal__input"
-              )}
+              className={getFieldClassName("title", "kanban-modal__input")}
               value={formik.values.title}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               autoFocus
             />
 
-            {formik.touched.title &&
-              formik.errors.title && (
-                <p className="kanban-modal__error">
-                  {formik.errors.title}
-                </p>
-              )}
+            {formik.touched.title && formik.errors.title && (
+              <p className="kanban-modal__error">{formik.errors.title}</p>
+            )}
           </div>
 
           {/* Description */}
           <div className="kanban-modal__group">
-            <label
-              className="kanban-modal__label"
-              htmlFor="description"
-            >
-              Description{" "}
-              <span className="required">*</span>
+            <label className="kanban-modal__label" htmlFor="description">
+              Description <span className="required">*</span>
             </label>
 
             <textarea
@@ -185,117 +133,73 @@ const KanbanModal = ({ isOpen, task }) => {
               name="description"
               rows="3"
               placeholder="Enter task description"
-              className={getFieldClassName(
-                "description",
-                "kanban-modal__textarea"
-              )}
+              className={getFieldClassName("description", "kanban-modal__textarea")}
               value={formik.values.description}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
 
-            {formik.touched.description &&
-              formik.errors.description && (
-                <p className="kanban-modal__error">
-                  {formik.errors.description}
-                </p>
-              )}
+            {formik.touched.description && formik.errors.description && (
+              <p className="kanban-modal__error">{formik.errors.description}</p>
+            )}
           </div>
 
           {/* Status & Priority */}
           <div className="kanban-modal__row">
             {/* Status */}
             <div className="kanban-modal__group">
-              <label
-                className="kanban-modal__label"
-                htmlFor="status"
-              >
-                Status{" "}
-                <span className="required">*</span>
+              <label className="kanban-modal__label" htmlFor="status">
+                Status <span className="required">*</span>
               </label>
 
               <select
                 id="status"
                 name="status"
-                className={getFieldClassName(
-                  "status",
-                  "kanban-modal__select"
-                )}
+                className={getFieldClassName("status", "kanban-modal__select")}
                 value={formik.values.status}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               >
-                <option value="">
-                  Select Status
-                </option>
+                <option value="">Select Status</option>
 
-                <option value={TASK_STATUSES.TODO}>
-                  To Do
-                </option>
+                <option value={TASK_STATUSES.TODO}>To Do</option>
 
-                <option
-                  value={TASK_STATUSES.IN_PROGRESS}
-                >
-                  In Progress
-                </option>
+                <option value={TASK_STATUSES.IN_PROGRESS}>In Progress</option>
 
-                <option value={TASK_STATUSES.DONE}>
-                  Done
-                </option>
+                <option value={TASK_STATUSES.DONE}>Done</option>
               </select>
 
-              {formik.touched.status &&
-                formik.errors.status && (
-                  <p className="kanban-modal__error">
-                    {formik.errors.status}
-                  </p>
-                )}
+              {formik.touched.status && formik.errors.status && (
+                <p className="kanban-modal__error">{formik.errors.status}</p>
+              )}
             </div>
 
             {/* Priority */}
             <div className="kanban-modal__group">
-              <label
-                className="kanban-modal__label"
-                htmlFor="priority"
-              >
-                Priority{" "}
-                <span className="required">*</span>
+              <label className="kanban-modal__label" htmlFor="priority">
+                Priority <span className="required">*</span>
               </label>
 
               <select
                 id="priority"
                 name="priority"
-                className={getFieldClassName(
-                  "priority",
-                  "kanban-modal__select"
-                )}
+                className={getFieldClassName("priority", "kanban-modal__select")}
                 value={formik.values.priority}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               >
-                <option value="">
-                  Select Priority
-                </option>
+                <option value="">Select Priority</option>
 
-                <option value="low">
-                  Low
-                </option>
+                <option value="low">Low</option>
 
-                <option value="medium">
-                  Medium
-                </option>
+                <option value="medium">Medium</option>
 
-                <option value="high">
-                  High
-                </option>
+                <option value="high">High</option>
               </select>
 
-              {formik.touched.priority &&
-                formik.errors.priority && (
-                  <p className="kanban-modal__error">
-                    {formik.errors.priority}
-                  </p>
-                )}
+              {formik.touched.priority && formik.errors.priority && (
+                <p className="kanban-modal__error">{formik.errors.priority}</p>
+              )}
             </div>
           </div>
 
@@ -303,12 +207,8 @@ const KanbanModal = ({ isOpen, task }) => {
           <div className="kanban-modal__row">
             {/* Due Date */}
             <div className="kanban-modal__group">
-              <label
-                className="kanban-modal__label"
-                htmlFor="dueDate"
-              >
-                Due Date{" "}
-                <span className="required">*</span>
+              <label className="kanban-modal__label" htmlFor="dueDate">
+                Due Date <span className="required">*</span>
               </label>
 
               <input
@@ -316,67 +216,43 @@ const KanbanModal = ({ isOpen, task }) => {
                 id="dueDate"
                 name="dueDate"
                 min={minDate}
-                className={getFieldClassName(
-                  "dueDate",
-                  "kanban-modal__input"
-                )}
+                className={getFieldClassName("dueDate", "kanban-modal__input")}
                 value={formik.values.dueDate}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
 
-              {formik.touched.dueDate &&
-                formik.errors.dueDate && (
-                  <p className="kanban-modal__error">
-                    {formik.errors.dueDate}
-                  </p>
-                )}
+              {formik.touched.dueDate && formik.errors.dueDate && (
+                <p className="kanban-modal__error">{formik.errors.dueDate}</p>
+              )}
             </div>
 
             {/* Assignee */}
             <div className="kanban-modal__group">
-              <label
-                className="kanban-modal__label"
-                htmlFor="assignee"
-              >
-                Assignee{" "}
-                <span className="required">*</span>
+              <label className="kanban-modal__label" htmlFor="assignee">
+                Assignee <span className="required">*</span>
               </label>
 
               <select
                 id="assignee"
                 name="assignee"
-                className={getFieldClassName(
-                  "assignee",
-                  "kanban-modal__select"
-                )}
+                className={getFieldClassName("assignee", "kanban-modal__select")}
                 value={formik.values.assignee}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               >
-                <option value="">
-                  Select Assignee
-                </option>
+                <option value="">Select Assignee</option>
 
-                <option value="Prashant">
-                  Prashant
-                </option>
+                <option value="Prashant">Prashant</option>
 
-                <option value="John">
-                  John
-                </option>
+                <option value="John">John</option>
 
-                <option value="Sarah">
-                  Sarah
-                </option>
+                <option value="Sarah">Sarah</option>
               </select>
 
-              {formik.touched.assignee &&
-                formik.errors.assignee && (
-                  <p className="kanban-modal__error">
-                    {formik.errors.assignee}
-                  </p>
-                )}
+              {formik.touched.assignee && formik.errors.assignee && (
+                <p className="kanban-modal__error">{formik.errors.assignee}</p>
+              )}
             </div>
           </div>
 
@@ -390,13 +266,8 @@ const KanbanModal = ({ isOpen, task }) => {
               Cancel
             </button>
 
-            <button
-              type="submit"
-              className="kanban-modal__btn kanban-modal__btn--submit"
-            >
-              {task
-                ? "Update Task"
-                : "Create Task"}
+            <button type="submit" className="kanban-modal__btn kanban-modal__btn--submit">
+              {task ? "Update Task" : "Create Task"}
             </button>
           </div>
         </form>

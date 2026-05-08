@@ -1,22 +1,16 @@
 import * as Yup from "yup";
 
-
 // INITIAL VALUES
 export const initialValues = {
   email: "",
-  password: ""
+  password: "",
 };
 
 // VALIDATION SCHEMA
 export const validationSchema = Yup.object({
-  email: Yup.string()
-    .email("Invalid email")
-    .required("Email required"),
-  password: Yup.string()
-    .min(6, "Min 6 chars")
-    .required("Password required")
+  email: Yup.string().email("Invalid email").required("Email required"),
+  password: Yup.string().min(6, "Min 6 chars").required("Password required"),
 });
-
 
 // API CALL
 export const loginApi = async (payload) => {
@@ -26,9 +20,9 @@ export const loginApi = async (payload) => {
   const res = await fetch("/api/login", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
 
   if (!res.ok) {
@@ -37,7 +31,6 @@ export const loginApi = async (payload) => {
 
   return await res.json();
 };
-
 
 // SESSION MANAGEMENT
 export const setSession = (data) => {
@@ -49,4 +42,3 @@ export const setSession = (data) => {
 export const clearSession = () => {
   sessionStorage.clear();
 };
-

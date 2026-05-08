@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 /**
  * Generic Reusable Stepper Component (MUI Style with Tailwind)
- * 
+ *
  * Props:
  * - steps: Array of {label: string, component: ReactNode}
  * - onStepComplete: Callback when all steps finished
  * - onStepChange: Callback when step changes
  * - activeStep: Current active step index (default: 0)
- * 
+ *
  * Usage:
  * <Stepper
  *   steps={[{label: "Step 1", component: <Form1 />}, ...]}
@@ -16,11 +16,7 @@ import React, { useState } from "react";
  * />
  */
 
-const Stepper = ({
-  steps = [],
-  onStepComplete = () => {},
-  onStepChange = () => {},
-}) => {
+const Stepper = ({ steps = [], onStepComplete = () => {}, onStepChange = () => {} }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState([]);
 
@@ -60,7 +56,7 @@ const Stepper = ({
         <div className="flex items-center w-full relative mb-12">
           {/* Continuous Background Line */}
           <div className="absolute top-9 left-0 right-0 h-1 bg-gray-300"></div>
-          
+
           {/* Filled Line (Progress) */}
           <div
             className="absolute top-9 left-0 h-1 bg-blue-500 transition-all duration-300"
@@ -72,10 +68,7 @@ const Stepper = ({
           {/* Steps */}
           <ol className="flex items-center w-full relative z-10">
             {steps.map((step, index) => (
-              <li
-                key={index}
-                className="flex flex-col items-center w-full"
-              >
+              <li key={index} className="flex flex-col items-center w-full">
                 {/* Step Button */}
                 <button
                   onClick={() => handleStepClick(index)}
@@ -128,9 +121,7 @@ const Stepper = ({
 
       {/* Step Content */}
       <div className="bg-white rounded-lg shadow-sm p-8 min-h-96 mb-8">
-        {steps[currentStep]?.component && (
-          <div>{steps[currentStep].component}</div>
-        )}
+        {steps[currentStep]?.component && <div>{steps[currentStep].component}</div>}
       </div>
 
       {/* Navigation Buttons */}

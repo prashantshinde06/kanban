@@ -7,13 +7,15 @@ const GenericModal = (props) => {
     message = "",
     headIcon = null,
     children = null,
-    modalButtonList = []
+    modalButtonList = [],
   } = props;
 
   const showHideClassName = showModal ? "flex" : "hidden";
 
   return (
-    <div className={`generic-modal ${showHideClassName} fixed inset-0 bg-black/50 z-50 items-center justify-center`}>
+    <div
+      className={`generic-modal ${showHideClassName} fixed inset-0 bg-black/50 z-50 items-center justify-center`}
+    >
       <div className="modal-dialog relative w-full max-w-md mx-auto">
         <div className="modal-content bg-white rounded-lg shadow-lg">
           {/* Close Button */}
@@ -45,11 +47,7 @@ const GenericModal = (props) => {
             )}
 
             {/* Message */}
-            {message && (
-              <p className="modal-message text-gray-600 text-center mb-4">
-                {message}
-              </p>
-            )}
+            {message && <p className="modal-message text-gray-600 text-center mb-4">{message}</p>}
 
             {/* Custom Children Content */}
             {children && <div className="modal-children mb-6">{children}</div>}
@@ -63,7 +61,10 @@ const GenericModal = (props) => {
                     <button
                       key={index}
                       type="button"
-                      className={buttonItem?.className || "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"}
+                      className={
+                        buttonItem?.className ||
+                        "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                      }
                       onClick={buttonItem?.onClickMethod}
                     >
                       {buttonItem?.name || ""}

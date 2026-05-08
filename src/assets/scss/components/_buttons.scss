@@ -59,7 +59,8 @@
     color: var(--primary-color);
 
     img {
-      filter: brightness(0) saturate(100%) invert(63%) sepia(54%) saturate(4849%) hue-rotate(336deg) brightness(97%) contrast(104%);
+      filter: brightness(0) saturate(100%) invert(63%) sepia(54%) saturate(4849%) hue-rotate(336deg)
+        brightness(97%) contrast(104%);
     }
 
     &:hover,

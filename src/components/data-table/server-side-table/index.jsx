@@ -22,7 +22,7 @@ const ServerSideTable = ({
   filterValues = {},
   setFilterValues = () => {},
   addButton = { visibility: false },
-  children = null
+  children = null,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sorting, setSorting] = useState({ columnName: null, isDesc: false });
@@ -47,7 +47,7 @@ const ServerSideTable = ({
     () =>
       headers.map((header) => ({
         ...header,
-        disableSortBy: header.disableSortBy || false
+        disableSortBy: header.disableSortBy || false,
       })),
     [headers]
   );
@@ -61,12 +61,12 @@ const ServerSideTable = ({
     rows: tableRows,
     prepareRow,
     state: tableState,
-    setPageSize: setTablePageSize
+    setPageSize: setTablePageSize,
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 10 }
+      initialState: { pageIndex: 0, pageSize: 10 },
     },
     useSortBy,
     usePagination,
@@ -80,7 +80,7 @@ const ServerSideTable = ({
       pageSize: pSize,
       searchQuery: search,
       filters: filters,
-      sorting: sort
+      sorting: sort,
     };
     try {
       apiCallFunction(payload);
@@ -134,9 +134,11 @@ const ServerSideTable = ({
       (selectedRow) => (selectedRow.id !== undefined ? selectedRow.id : selectedRow) === rowId
     );
     if (isSelected) {
-      setSelectedRows(selectedRows.filter(
-        (selectedRow) => (selectedRow.id !== undefined ? selectedRow.id : selectedRow) !== rowId
-      ));
+      setSelectedRows(
+        selectedRows.filter(
+          (selectedRow) => (selectedRow.id !== undefined ? selectedRow.id : selectedRow) !== rowId
+        )
+      );
     } else {
       setSelectedRows([...selectedRows, row]);
     }
@@ -189,7 +191,9 @@ const ServerSideTable = ({
           )}
           {addButton.visibility && (
             <button
-              className={`px-4 py-2 rounded text-sm font-medium cursor-pointer flex items-center gap-2 transition-all hover:shadow ${addButton.className || "bg-blue-600 text-white hover:bg-blue-700"}`}
+              className={`px-4 py-2 rounded text-sm font-medium cursor-pointer flex items-center gap-2 transition-all hover:shadow ${
+                addButton.className || "bg-blue-600 text-white hover:bg-blue-700"
+              }`}
               onClick={addButton.onClickHandler}
               title={addButton.label}
             >
@@ -213,7 +217,11 @@ const ServerSideTable = ({
           <table {...getTableProps()} className="w-full border-collapse">
             <thead>
               {headerGroups.map((headerGroup, headerGroupIndex) => (
-                <tr {...headerGroup.getHeaderGroupProps()} key={`header-${headerGroupIndex}`} className="border-b border-gray-200 bg-gray-50">
+                <tr
+                  {...headerGroup.getHeaderGroupProps()}
+                  key={`header-${headerGroupIndex}`}
+                  className="border-b border-gray-200 bg-gray-50"
+                >
                   {isCheckboxRequired && (
                     <th className="px-4 py-3 text-left">
                       <input
@@ -235,21 +243,19 @@ const ServerSideTable = ({
                                 const isSortedDesc = column.isSorted ? !column.isSortedDesc : false;
                                 handleSortChange(column.id, isSortedDesc);
                                 column.toggleSortBy(!column.isSortedDesc);
-                              }
+                              },
                             }
                       )}
                       key={column.id}
-                      className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 ${!column.disableSortBy ? "cursor-pointer hover:bg-gray-100" : ""}`}
+                      className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 ${
+                        !column.disableSortBy ? "cursor-pointer hover:bg-gray-100" : ""
+                      }`}
                     >
                       <div className="flex items-center justify-between gap-2">
                         <span>{column.render("Header")}</span>
                         {!column.disableSortBy && (
                           <span className="text-xs text-gray-400">
-                            {column.isSorted ? (
-                              column.isSortedDesc ? "↓" : "↑"
-                            ) : (
-                              "↕"
-                            )}
+                            {column.isSorted ? (column.isSortedDesc ? "↓" : "↑") : "↕"}
                           </span>
                         )}
                       </div>
@@ -272,7 +278,9 @@ const ServerSideTable = ({
                   <tr
                     {...row.getRowProps()}
                     key={`${pageIndex}-${rowIndex}`}
-                    className={`border-b border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer ${isRowSelected ? "bg-blue-50" : ""}`}
+                    className={`border-b border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer ${
+                      isRowSelected ? "bg-blue-50" : ""
+                    }`}
                     onClick={() => handleRowClick(row.original)}
                   >
                     {isCheckboxRequired && (

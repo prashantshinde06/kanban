@@ -26,7 +26,7 @@ const Table = ({
   filterValues = {},
   setFilterValues = () => {},
   addButton = { visibility: false },
-  children = null
+  children = null,
 }) => {
   if (type === "serverSide") {
     return (

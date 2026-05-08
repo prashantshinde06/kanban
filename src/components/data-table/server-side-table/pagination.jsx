@@ -6,7 +6,7 @@ const ServerSidePagination = ({
   pageSize,
   setPageSize,
   setTablePageSize,
-  totalCount
+  totalCount,
 }) => {
   const startEntry = pageIndex * pageSize + 1;
   const endEntry = Math.min((pageIndex + 1) * pageSize, totalCount);
@@ -31,15 +31,15 @@ const ServerSidePagination = ({
     <div className="flex justify-between items-center flex-wrap p-4 border-t border-gray-200 bg-gray-50 gap-5">
       <div>
         <span className="text-sm text-gray-600 font-medium">
-          {totalCount === 0
-            ? "No items"
-            : `${startEntry}-${endEntry} of ${totalCount} items`}
+          {totalCount === 0 ? "No items" : `${startEntry}-${endEntry} of ${totalCount} items`}
         </span>
       </div>
 
       <div className="flex items-center gap-4 flex-wrap">
         <div className="flex items-center gap-2">
-          <label htmlFor="pageSize" className="text-sm text-gray-600 font-medium">Items per page:</label>
+          <label htmlFor="pageSize" className="text-sm text-gray-600 font-medium">
+            Items per page:
+          </label>
           <select
             id="pageSize"
             value={pageSize}

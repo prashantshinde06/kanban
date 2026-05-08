@@ -6,7 +6,7 @@ const ClientSidePagination = ({
   pageIndex,
   filteredRows,
   pageCount,
-  gotoPage
+  gotoPage,
 }) => {
   const startEntry = pageSize * (pageIndex + 1) - pageSize + 1;
   const endEntry = Math.min(pageSize * (pageIndex + 1), filteredRows?.length || 0);
@@ -29,15 +29,15 @@ const ClientSidePagination = ({
     <div className="flex justify-between items-center flex-wrap p-4 border-t border-gray-200 bg-gray-50 gap-5">
       <div>
         <span className="text-sm text-gray-600 font-medium">
-          {totalEntries === 0
-            ? "No items"
-            : `${startEntry}-${endEntry} of ${totalEntries} items`}
+          {totalEntries === 0 ? "No items" : `${startEntry}-${endEntry} of ${totalEntries} items`}
         </span>
       </div>
 
       <div className="flex items-center gap-4 flex-wrap">
         <div className="flex items-center gap-2">
-          <label htmlFor="pageSize" className="text-sm text-gray-600 font-medium">Items per page:</label>
+          <label htmlFor="pageSize" className="text-sm text-gray-600 font-medium">
+            Items per page:
+          </label>
           <select
             id="pageSize"
             value={pageSize}

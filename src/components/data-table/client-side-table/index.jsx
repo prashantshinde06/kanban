@@ -15,7 +15,7 @@ const ClientSideTable = ({
   resetTable = false,
   setResetTable = () => {},
   addButton = { visibility: false },
-  children = null
+  children = null,
 }) => {
   const [globalFilter, setGlobalFilter] = useState("");
   const [filteredData, setFilteredData] = useState(rows);
@@ -38,7 +38,7 @@ const ClientSideTable = ({
     () =>
       headers.map((header) => ({
         ...header,
-        disableSortBy: header.disableSortBy || false
+        disableSortBy: header.disableSortBy || false,
       })),
     [headers]
   );
@@ -54,12 +54,12 @@ const ClientSideTable = ({
     pageCount,
     state: { pageIndex, pageSize },
     gotoPage,
-    setPageSize
+    setPageSize,
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 10 }
+      initialState: { pageIndex: 0, pageSize: 10 },
     },
     useFilters,
     useSortBy,
@@ -74,9 +74,11 @@ const ClientSideTable = ({
     );
 
     if (isSelected) {
-      setSelectedRows(selectedRows.filter(
-        (selectedRow) => (selectedRow.id !== undefined ? selectedRow.id : selectedRow) !== rowId
-      ));
+      setSelectedRows(
+        selectedRows.filter(
+          (selectedRow) => (selectedRow.id !== undefined ? selectedRow.id : selectedRow) !== rowId
+        )
+      );
     } else {
       setSelectedRows([...selectedRows, row]);
     }
@@ -84,10 +86,10 @@ const ClientSideTable = ({
 
   const handleSelectAll = () => {
     // Select/deselect all rows from the filtered data (all pages, not just current page)
-    const allFilteredRows = data.map(row => row);
-    
+    const allFilteredRows = data.map((row) => row);
+
     // Check if all rows are already selected
-    const allRowsSelected = allFilteredRows.every(row =>
+    const allRowsSelected = allFilteredRows.every((row) =>
       selectedRows.some(
         (selectedRow) =>
           (selectedRow.id !== undefined ? selectedRow.id : selectedRow) ===
@@ -107,7 +109,7 @@ const ClientSideTable = ({
   // Check if all rows in current filtered data are selected
   const isAllSelected = useMemo(() => {
     if (data.length === 0) return false;
-    return data.every(row =>
+    return data.every((row) =>
       selectedRows.some(
         (selectedRow) =>
           (selectedRow.id !== undefined ? selectedRow.id : selectedRow) ===
@@ -143,7 +145,9 @@ const ClientSideTable = ({
           {children}
           {addButton.visibility && (
             <button
-              className={`px-4 py-2 rounded text-sm font-medium cursor-pointer flex items-center gap-2 transition-all hover:shadow ${addButton.className || "bg-blue-600 text-white hover:bg-blue-700"}`}
+              className={`px-4 py-2 rounded text-sm font-medium cursor-pointer flex items-center gap-2 transition-all hover:shadow ${
+                addButton.className || "bg-blue-600 text-white hover:bg-blue-700"
+              }`}
               onClick={addButton.onClickHandler}
               title={addButton.label}
             >
@@ -167,7 +171,11 @@ const ClientSideTable = ({
           <table {...getTableProps()} className="w-full border-collapse">
             <thead>
               {headerGroups.map((headerGroup, headerGroupIndex) => (
-                <tr {...headerGroup.getHeaderGroupProps()} key={`header-${headerGroupIndex}`} className="border-b border-gray-200 bg-gray-50">
+                <tr
+                  {...headerGroup.getHeaderGroupProps()}
+                  key={`header-${headerGroupIndex}`}
+                  className="border-b border-gray-200 bg-gray-50"
+                >
                   {isCheckboxRequired && (
                     <th className="px-4 py-3 text-left">
                       <input
@@ -182,22 +190,18 @@ const ClientSideTable = ({
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps(
-                        column.disableSortBy
-                          ? {}
-                          : column.getSortByToggleProps()
+                        column.disableSortBy ? {} : column.getSortByToggleProps()
                       )}
                       key={column.id}
-                      className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 ${!column.disableSortBy ? "cursor-pointer hover:bg-gray-100" : ""}`}
+                      className={`px-4 py-3 text-left text-sm font-semibold text-gray-700 ${
+                        !column.disableSortBy ? "cursor-pointer hover:bg-gray-100" : ""
+                      }`}
                     >
                       <div className="flex items-center justify-between gap-2">
                         <span>{column.render("Header")}</span>
                         {!column.disableSortBy && (
                           <span className="text-xs text-gray-400">
-                            {column.isSorted ? (
-                              column.isSortedDesc ? "↓" : "↑"
-                            ) : (
-                              "↕"
-                            )}
+                            {column.isSorted ? (column.isSortedDesc ? "↓" : "↑") : "↕"}
                           </span>
                         )}
                       </div>
@@ -220,7 +224,9 @@ const ClientSideTable = ({
                   <tr
                     {...row.getRowProps()}
                     key={`${pageIndex}-${rowIndex}`}
-                    className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${isRowSelected ? "bg-blue-50" : ""}`}
+                    className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
+                      isRowSelected ? "bg-blue-50" : ""
+                    }`}
                   >
                     {isCheckboxRequired && (
                       <td className="px-4 py-3 text-left">

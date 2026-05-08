@@ -20,9 +20,7 @@ const Kanban = () => {
   }, [dispatch, tasks.length]);
 
   const todoTasks = tasks.filter((task) => task.status === TASK_STATUSES.TODO);
-  const inProgressTasks = tasks.filter(
-    (task) => task.status === TASK_STATUSES.IN_PROGRESS
-  );
+  const inProgressTasks = tasks.filter((task) => task.status === TASK_STATUSES.IN_PROGRESS);
   const doneTasks = tasks.filter((task) => task.status === TASK_STATUSES.DONE);
 
   const handleCreateTask = () => {
@@ -61,21 +59,13 @@ const Kanban = () => {
       )}
 
       <div className="kanban__board">
-        <KanbanColumn
-          status={TASK_STATUSES.TODO}
-          title="To Do"
-          tasks={todoTasks}
-        />
+        <KanbanColumn status={TASK_STATUSES.TODO} title="To Do" tasks={todoTasks} />
         <KanbanColumn
           status={TASK_STATUSES.IN_PROGRESS}
           title="In Progress"
           tasks={inProgressTasks}
         />
-        <KanbanColumn
-          status={TASK_STATUSES.DONE}
-          title="Done"
-          tasks={doneTasks}
-        />
+        <KanbanColumn status={TASK_STATUSES.DONE} title="Done" tasks={doneTasks} />
       </div>
 
       <KanbanModal isOpen={modalOpen} task={editingTask} />

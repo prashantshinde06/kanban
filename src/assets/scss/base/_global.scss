@@ -33,7 +33,6 @@
   width: 24%;
 }
 
-
 .hrms-small-inputs {
   width: 55px;
 }
@@ -172,7 +171,7 @@ svg.dropdown-heading-dropdown-arrow.gray {
 }
 
 .onboarding-wrapper {
-  background-image: url('../../images/bg/bg-login.png');
+  background-image: url("../../images/bg/bg-login.png");
   background-repeat: no-repeat;
   height: 100vh;
   background-position: center;
@@ -204,9 +203,9 @@ svg.dropdown-heading-dropdown-arrow.gray {
   border-left: 1px solid #ccc;
 }
 
-.pg-viewer-wrapper img{
+.pg-viewer-wrapper img {
   object-fit: scale-down;
 }
-.min-w-200{
+.min-w-200 {
   min-width: 200px;
 }

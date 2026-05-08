@@ -1,6 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { openModal, openConfirmModal, closeConfirmModal, removeKanbanTask } from "@/redux/slices/kanban.slice";
+import {
+  openModal,
+  openConfirmModal,
+  closeConfirmModal,
+  removeKanbanTask,
+} from "@/redux/slices/kanban.slice";
 import { REDUX_KEYS } from "@/_helpers/constants";
 import GenericModal from "@/components/modal";
 
@@ -40,12 +45,14 @@ const TaskCard = ({ task, isDragging, onDragStart }) => {
     {
       name: "Cancel",
       onClickMethod: handleCancelDelete,
-      className: "px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors font-medium",
+      className:
+        "px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors font-medium",
     },
     {
       name: "Delete",
       onClickMethod: handleConfirmDelete,
-      className: "px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors font-medium",
+      className:
+        "px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors font-medium",
     },
   ];
 
@@ -72,9 +79,7 @@ const TaskCard = ({ task, isDragging, onDragStart }) => {
               {task.priority}
             </span>
           )}
-          {task.assignee && (
-            <span className="task-card__assignee">{task.assignee}</span>
-          )}
+          {task.assignee && <span className="task-card__assignee">{task.assignee}</span>}
         </div>
 
         {task.dueDate && (
