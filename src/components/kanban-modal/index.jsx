@@ -67,6 +67,7 @@ const KanbanModal = ({ isOpen, task }) => {
           editKanbanTask({
             id: task.id,
             taskData: payload,
+            isLocal: task.isLocal,
           })
         );
       } else {

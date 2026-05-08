@@ -20,7 +20,7 @@ const TaskCard = ({ task, isDragging, onDragStart }) => {
   };
 
   const handleConfirmDelete = () => {
-    dispatch(removeKanbanTask(task.id));
+    dispatch(removeKanbanTask({ taskId: task.id, isLocal: task.isLocal }));
   };
 
   const handleCancelDelete = () => {

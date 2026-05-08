@@ -46,10 +46,10 @@ export const addKanbanTask = createAsyncThunk(
         ...taskData,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        isLocal: true,
       };
-      // Call API
-      await createKanbanTask(newTask);
-      // Show success toast
+      // Call API for logging/demo, but do not depend on response for local tasks
+      await createKanbanTask(newTask).catch(() => null);
       dispatch(
         setToastNotification({
           visibility: true,
@@ -68,21 +68,23 @@ export const addKanbanTask = createAsyncThunk(
 
 export const editKanbanTask = createAsyncThunk(
   "kanban/editKanbanTask",
-  async ({ id, taskData }, { dispatch, rejectWithValue }) => {
+  async ({ id, taskData, isLocal }, { dispatch, rejectWithValue }) => {
     try {
       const updatedTask = {
         ...taskData,
         id,
         updatedAt: new Date().toISOString(),
+        isLocal: isLocal || false,
       };
-      // Call API
-      await updateKanbanTask(id, updatedTask);
+      if (!isLocal) {
+        await updateKanbanTask(id, updatedTask);
+      }
       dispatch(
         setToastNotification({
           visibility: true,
           type: "success",
           title: "Task updated",
-          message: `Task \"${updatedTask.title}\" was updated successfully.`,
+          message: `Task "${updatedTask.title}" was updated successfully.`,
           timeOut: 3000,
         })
       );
@@ -95,10 +97,11 @@ export const editKanbanTask = createAsyncThunk(
 
 export const removeKanbanTask = createAsyncThunk(
   "kanban/removeKanbanTask",
-  async (taskId, { dispatch, rejectWithValue }) => {
+  async ({ taskId, isLocal }, { dispatch, rejectWithValue }) => {
     try {
-      // Call API
-      await deleteKanbanTask(taskId);
+      if (!isLocal) {
+        await deleteKanbanTask(taskId);
+      }
       dispatch(
         setToastNotification({
           visibility: true,
