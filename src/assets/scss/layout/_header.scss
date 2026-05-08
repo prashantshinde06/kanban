@@ -1,0 +1,18 @@
+// Header Component Styles
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  transition: all 0.3s ease-in-out;
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  // Smooth shadow on scroll effect
+  &.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}

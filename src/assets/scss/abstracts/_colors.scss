@@ -1,0 +1,69 @@
+// =========== COLORS ===========
+
+// Neutral Colors
+$white: #fff;
+$black: #000;
+$white-color: #fff;
+$black-color: #000;
+$dark-black: #1a1a1a;
+
+// Grayscale
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+$grays: (
+  "gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900,
+);
+
+// Theme Colors
+$primary: #fc6736;
+$secondary: #1c2f72;
+$tertiary: #666;
+$info: #2f80ed;
+$danger: #eb5757;
+$warning: #f2994a;
+$success: #27a360;
+$red-color: #fc4368;
+$blue-color: #4c5fcd;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "tertiary": $tertiary,
+);
+
+// Text & Background Colors
+$body-color: #6C6C6C;
+$body-bg: #fff;
+$text-muted: #bdbdbd;
+$link-color: #007bff;
+$link-hover-color: #007bff;
+
+// UI Colors
+$border-color: #f2f2f2;
+$input-border: #ddd;
+$overlay-color: rgba(0, 0, 0, 0.7);
+$shadow-color: rgba(0, 0, 0, 0.15);
+
+// Gradient Colors
+$gradient-primary-start: #1e3cff;
+$gradient-primary-end: #4a5cff;

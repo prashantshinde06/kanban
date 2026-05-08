@@ -1,0 +1,212 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as *;
+
+.text-danger {
+  color: var(--text-danger-color);
+}
+
+#user-role-detail {
+  .hrms-custom-search {
+    min-width: 100%;
+  }
+}
+
+#rolesReponsibilities {
+  .hrms-card {
+    border-top: none;
+  }
+}
+
+.hrms-number-input {
+  max-width: 62px;
+  width: 100%;
+}
+
+.hrms-min-w-0 {
+  min-width: 0 !important;
+}
+
+.hrms-min-w-40 {
+  width: 40%;
+}
+.hrms-min-w-24 {
+  width: 24%;
+}
+
+
+.hrms-small-inputs {
+  width: 55px;
+}
+
+.hrms-medium-inputs {
+  width: 80px;
+}
+
+.emp-directory-wrapper {
+  max-height: 725px;
+  min-height: 725px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.bg-lightgray {
+  background-color: var(--table-header-bg) !important;
+}
+
+.user-access-wrapper {
+  min-height: calc(100vh - 179px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .user-access-container {
+    text-align: center;
+
+    .user-access-heading {
+      color: var(--secondary-color);
+      @include font-poppins(700, normal, 32px);
+      line-height: 48px;
+    }
+
+    .user-access-para {
+      color: var(--footer-link-color);
+      @include font-poppins(500, normal, 14px);
+      line-height: 21px;
+    }
+  }
+}
+
+.user-role-section {
+  .col {
+    &:first-child .card {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 0px;
+    }
+
+    &:nth-child(2) .card {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      .list-group-item {
+        &:first-child {
+          border-top-left-radius: 0;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+  }
+
+  .hrms-roles-card {
+    min-width: 240px;
+
+    .list-group-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 38px;
+      padding: 0 15px;
+
+      .policy-title {
+        height: 38px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.custom-vr {
+  background-color: var(--tabs-border-color);
+  height: 24px;
+  opacity: unset;
+  align-self: center;
+}
+
+.border {
+  border-color: #f2f2f2 !important;
+}
+
+svg.dropdown-heading-dropdown-arrow.gray {
+  stroke: var(--secondary-card-text-color);
+}
+
+.bg-lightgray {
+  background-color: var(--table-header-bg) !important;
+}
+
+.hrms-custom-textarea {
+  background-color: var(--border-color);
+  border: solid 1px var(--tabs-border-color);
+  @include primary-overflow;
+
+  &::placeholder {
+    color: var(--default-text-color);
+    @include font-poppins(400, normal, 12px);
+    line-height: 16px;
+  }
+}
+
+.core-value-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: $secondary;
+  @include font-poppins(700, normal, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-hr {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-color: var(--tabs-border-color);
+}
+
+.onboarding-wrapper {
+  background-image: url('../../images/bg/bg-login.png');
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+
+  .save-btn {
+    min-width: 224px !important;
+  }
+}
+
+.policy-title {
+  height: 38px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pg-viewer-wrapper .document-container {
+  width: 100% !important;
+  padding-bottom: 50px !important;
+}
+
+.pg-viewer-wrapper table {
+  width: 100%;
+}
+
+.pg-viewer-wrapper td {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.pg-viewer-wrapper img{
+  object-fit: scale-down;
+}
+.min-w-200{
+  min-width: 200px;
+}

@@ -1,0 +1,102 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.login-container {
+  position: relative;
+  height: 100dvh;
+  background-image: $bg-login;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // overlay
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: $overlay-color;
+    z-index: 1;
+  }
+
+  .login-card {
+    position: relative;
+    z-index: 2;
+
+    width: 320px;
+    min-height: 428px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    padding: 24px;
+    border-radius: 24px;
+    background: $white;
+    box-shadow: 0 10px 30px $shadow-color;
+
+    //Logo
+    .logo {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: $body-color;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid $input-border;
+      font-size: 14px;
+      color: $body-color;
+
+      &::placeholder {
+        color: $text-muted;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+
+      background: linear-gradient(90deg, $gradient-primary-start, $gradient-primary-end);
+      color: $white;
+      font-weight: 500;
+    }
+
+
+
+    .forgot-password {
+      @include inter-medium;
+      @include text-underline(1px);
+      color: $body-color;
+      cursor: pointer;
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+
+  .error {
+    color: $danger;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+}

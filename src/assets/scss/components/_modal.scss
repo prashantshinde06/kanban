@@ -1,0 +1,46 @@
+// =============================================================================
+// Modal Component Styles
+// =============================================================================
+// Generic modal component supporting Tailwind CSS with SCSS enhancements
+// Location: src/components/modal/modal.scss
+// Usage: Import in component and apply classes
+
+// =============================================================================
+// Modal Structure Documentation
+// =============================================================================
+// Class Hierarchy:
+// 
+// .generic-modal (container)
+//   ├── .modal-dialog (centered wrapper)
+//   │   └── .modal-content (white card)
+//   │       ├── .modal-header (close button area)
+//   │       └── .modal-body
+//   │           ├── .modal-title (h3)
+//   │           ├── .modal-message (p)
+//   │           ├── .modal-children (custom content)
+//   │           └── .modal-buttons (button group)
+//
+// =============================================================================
+
+// Usage Example:
+// ============
+// <GenericModal
+//   showModal={true}
+//   title="Confirm Delete"
+//   message="This action cannot be undone."
+//   headIcon={iconSrc}
+//   modalButtonList={[
+//     {
+//       name: 'Cancel',
+//       className: 'px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400',
+//       onClickMethod: handleCancel,
+//       visibility: true
+//     },
+//     {
+//       name: 'Delete',
+//       className: 'px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600',
+//       onClickMethod: handleDelete,
+//       visibility: true
+//     }
+//   ]}
+// />

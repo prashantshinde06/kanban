@@ -1,0 +1,180 @@
+@forward "colors";
+
+$app-prefix: "hrms-" !default;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+$white: #fff;
+$black: #000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$grays: (
+  "gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900,
+);
+$primary: #fc6736;
+$secondary: #1c2f72;
+$tertiary: #666;
+$info: #2f80ed;
+$danger: #eb5757;
+$warning: #f2994a;
+$success: #27a360;
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "tertiary": $tertiary,
+);
+$body-color: #666;
+$body-bg: #fff;
+$text-muted: #bdbdbd;
+$link-color: #007bff;
+$link-hover-color: #007bff;
+$font-family-base: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial,
+  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-base-secondary: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue",
+  arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-size-base: 1rem;
+$font-weight-base: 400rem;
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.75rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+$headings-margin-bottom: 10px;
+$btn-padding-x: 0.75rem;
+$btn-padding-y: 0.375rem;
+$btn-font-size: 1rem;
+$btn-border-width: 1px;
+$btn-font-weight: 600;
+$btn-line-height: 1.35;
+$btn-link-disabled-color: #6c757d;
+$btn-border-radius: 5px;
+$input-font-size: 0.75rem;
+$input-padding-y: 0.625rem;
+$input-padding-x: 0.75rem;
+$input-border-color: #bfbfbf;
+$input-placeholder-color: #bdbdbd;
+$input-btn-focus-color: none;
+$input-focus-box-shadow: none;
+$input-focus-border-color: nan;
+$form-check-input-checked-bg-color: $primary;
+$form-check-input-focus-box-shadow: none;
+$form-check-input-border: 1px solid #aaaaaa;
+$mtds-select-padding-y: 0.35rem;
+$input-border-radius: 4px;
+$dropdown-font-size: 1rem;
+$dropdown-link-active-bg: $primary;
+$dropdown-bg: #fff;
+$dropdown-border-radius: 0px;
+$dropdown-border-color: #fff;
+$dropdown-item-padding-x: 1rem;
+$list-group-bg: #dfedff;
+$list-group-border-color: #d9e1ff;
+$list-group-active-bg: #fff;
+$list-group-active-color: #1a1a1a;
+$list-group-item-padding-y: 0.75rem;
+$list-group-item-padding-x: 0.75rem;
+$nav-pills-link-active-bg: #1e1e51;
+$navbar-padding-y: 1.2rem;
+$navbar-dark-hover-color: #fff;
+$navbar-light-hover-color: #1e1e51;
+$pagination-font-size: 14px;
+$pagination-padding-x: 8px;
+$pagination-padding-y: 2px;
+$pagination-color: #767676;
+$pagination-bg: trasparent;
+$pagination-border-color: transparent;
+$pagination-focus-color: #68b0da;
+$pagination-focus-bg: transparent;
+$pagination-focus-box-shadow: none;
+$pagination-disabled-color: #d1d1d1;
+$pagination-disabled-bg: transparent;
+$pagination-disabled-border-color: transparent;
+$pagination-hover-color: #1a1a1a;
+$pagination-hover-bg: #e8e8e8;
+$pagination-hover-border-color: transparent;
+$pagination-active-color: #68b0da;
+$pagination-active-bg: transparent;
+$pagination-active-border-color: transparent;
+$card-spacer-y: 1rem;
+$card-spacer-x: 1rem;
+$card-border-color: #fff;
+$card-bg: #fff;
+$card-img-overlay-padding: 1rem;
+$card-box-shadow: 0px 4px 20px 0px #0000001a;
+$table-border-color: var(--border-color);
+$jumbotron-padding: 2rem;
+$jumbotron-bg: #fff;
+$progress-height: 0.625rem;
+$progress-font-size: 1rem;
+$progress-bg: #e0e0e0;
+$progress-bar-bg: #1e1e51;
+$progress-circle-border-width: 8px;
+$progress-circle-animation-time: 0.5s;
+$progress-circle-border-color: #fff;
+$progress-circle-border-color-fill: #1e1e51;
+$progress-circle-size: 6.125rem;
+$progress-circle-steps: 100;
+$alert-padding-y: 1.125rem;
+$alert-padding-x: 1.5rem;
+$alert-color-level: -12.5;
+$toast-color: #6c757d;
+$toast-padding-x: 1.25rem;
+$breadcrumb-item-padding: 0.75rem;
+$breadcrumb-divider-color: #666;
+$breadcrumb-active-color: #666;
+$carousel-control-color: #1e1e51;
+$carousel-indicator-width: 6px;
+$carousel-indicator-height: 6px;
+$carousel-indicator-spacer: 5px;
+$carousel-indicator-active-bg: #1e1e51;
+$modal-content-border-width: 1px;
+$modal-inner-padding: 24px;
+$modal-content-border-radius: 6px;
+$modal-content-box-shadow-sm-up: 0px 2px 40px 0px #0000000f;
+$modal-content-border-color: #fff;
+$offcanvas-horizontal-width: 681px;
+$modal-lg: 800px;
+$modal-md: 500px;
+$modal-sm: 300px;
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$navbar-light-color: rgba($primary, 0.75);
+$navbar-dark-color: rgba($white, 0.75);
+$pagination-hover-bg: rgba($secondary, 0.1);
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+);
+
+$bg-login: url("../../images/bg//bg-login.png");

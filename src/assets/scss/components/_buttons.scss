@@ -1,0 +1,244 @@
+.btn-login {
+  background-color: $white-color;
+  color: #0000008a;
+  @include font-poppins(500, normal, 16px);
+  height: 54px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: var(--footer-bg);
+    border: 1px solid var(--border-color);
+  }
+
+  &:active {
+    border-color: var(--border-color);
+  }
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+.btn-primary {
+  color: $white-color;
+  @include font-poppins(500, normal, 14px);
+
+  &.save-btn {
+    min-width: 83px;
+    height: 36px;
+    padding: 8px 16px 8px 16px;
+  }
+
+  &:hover {
+    color: $white-color;
+  }
+
+  &:disabled {
+    background-color: var(--btn-disabled-bg);
+    border: 1px solid var(--btn-disabled-bg);
+    color: $white-color;
+  }
+
+  &:active {
+    color: $white !important;
+  }
+}
+
+.hrms-link-btn {
+  @include font-poppins(500, normal, 14px);
+  padding: 0;
+  border: none;
+
+  .link-icon {
+    margin-right: 8px;
+  }
+
+  &.primary {
+    color: var(--primary-color);
+
+    img {
+      filter: brightness(0) saturate(100%) invert(63%) sepia(54%) saturate(4849%) hue-rotate(336deg) brightness(97%) contrast(104%);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.btn-outline-primary {
+  @include font-poppins(500, normal, 14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include icon-hide-show;
+  height: 36px;
+  background-color: $white-color;
+
+  &.cancel-btn {
+    min-width: 99px;
+    height: 36px;
+    padding: 8px 16px;
+
+    &.export-pii-report-button {
+      min-width: auto;
+      padding: 8px 12px;
+
+      .export-pii-report-button-text {
+        display: none;
+      }
+
+      &:hover {
+        .export-pii-report-button-text {
+          display: block;
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+
+  &:hover,
+  &:active {
+    color: $white-color !important;
+  }
+}
+
+.btn-secondary {
+  color: $white-color;
+  @include font-poppins(500, normal, 14px);
+  background-color: var(--secondary-color);
+  padding: 8px 24px;
+
+  &.save-btn {
+    min-width: 133px;
+  }
+
+  &.disabled {
+    background-color: var(--btn-disabled-bg) !important;
+    border: 1px solid var(--btn-disabled-bg) !important;
+    color: $white-color;
+  }
+}
+
+.btn-outline-secondary {
+  @include font-poppins(500, normal, 14px);
+  border-color: var(--secondary-color);
+  padding: 8px 16px;
+
+  &:hover {
+    color: $white-color;
+  }
+}
+
+.secondary-btn-link {
+  text-decoration: none;
+  @include font-poppins(500, normal, 14px);
+  padding: 0;
+  color: $secondary;
+  line-height: 20px;
+}
+
+.btn.btn-primary[disabled] {
+  color: $white-color;
+}
+
+.btn-ellipsis {
+  display: block;
+  /* or inline-block */
+  max-width: 100%;
+  /* Adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--form-text-color);
+}
+
+.btn-ellipsis-roles {
+  display: block;
+  /* or inline-block */
+  max-width: 100%;
+  /* Adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.user-role-card {
+  .btn:disabled {
+    border: none;
+  }
+}
+
+.btn-ellipsis-modules {
+  display: block;
+  /* or inline-block */
+  max-width: 100%;
+  /* Adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.hrms-primary-btn {
+  @include font-poppins(500, normal, 14px);
+
+  &.save-btn {
+    min-width: 100%;
+    height: 36px;
+    color: var(--bs-primary);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--bs-primary);
+    background-color: var(--border-color);
+  }
+
+  &:disabled {
+    border: none;
+    opacity: 0.65;
+  }
+}
+
+.primary-btn-link {
+  text-decoration: none;
+  @include font-poppins(500, normal, 14px);
+  padding: 0;
+  color: var(--tabs-active-color);
+  line-height: 20px;
+
+  &:hover {
+    color: var(--tabs-active-color);
+  }
+}
+
+.btn-close {
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.btn-outline-gray {
+  @include font-poppins(500, normal, 14px);
+  border-color: var(--outline-gray-color);
+  color: var(--outline-gray-color);
+  padding: 8px 16px;
+  border: solid 1px var(--outline-gray-color);
+  min-width: 133px;
+  height: 36px;
+
+  &:hover {
+    border: solid 1px var(--outline-gray-color);
+  }
+}

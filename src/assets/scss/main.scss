@@ -1,0 +1,33 @@
+// Your variable overrides
+
+@use "abstracts/variables";
+@use "abstracts/mixins" as *;
+
+/* -------layout--------- */
+
+@use "layout/header";
+
+/* -------pages--------- */
+
+@use "pages/kanban";
+
+/* -------components--------- */
+
+@use "components/login";
+@use "components/toast";
+@use "components/tables";
+@use "components/tables-pagination";
+@use "components/modal";
+@use "components/kanban-column";
+@use "components/kanban-task-card";
+@use "components/kanban-modal";
+
+/* -------Base--------- */
+
+// @import "base/font";
+
+@use "base/global";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
