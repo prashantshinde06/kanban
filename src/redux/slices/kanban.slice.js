@@ -151,7 +151,7 @@ const kanbanSlice = createSlice({
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
-      state.tasks.push(newTask);
+      state.tasks.unshift(newTask);
       state.modalOpen = false;
     },
 
@@ -177,15 +177,38 @@ const kanbanSlice = createSlice({
     moveTask: (state, action) => {
       const { taskId, newStatus, newIndex } = action.payload;
       const taskIndex = state.tasks.findIndex((task) => task.id === taskId);
-      
-      if (taskIndex !== -1) {
-        state.tasks[taskIndex].status = newStatus;
+      if (taskIndex === -1) {
+        return;
       }
 
-      // Reorder tasks if newIndex is provided
+      const [movedTask] = state.tasks.splice(taskIndex, 1);
+      movedTask.status = newStatus;
+      movedTask.updatedAt = new Date().toISOString();
+
       if (newIndex !== undefined) {
-        const [movedTask] = state.tasks.splice(taskIndex, 1);
-        state.tasks.splice(newIndex, 0, movedTask);
+        const statusIndexes = state.tasks.reduce((indexes, task, idx) => {
+          if (task.status === newStatus) {
+            indexes.push(idx);
+          }
+          return indexes;
+        }, []);
+
+        const insertIndex = statusIndexes.length === 0
+          ? state.tasks.length
+          : newIndex <= 0
+            ? statusIndexes[0]
+            : newIndex >= statusIndexes.length
+              ? statusIndexes[statusIndexes.length - 1] + 1
+              : statusIndexes[newIndex];
+
+        state.tasks.splice(insertIndex, 0, movedTask);
+      } else {
+        const firstStatusIndex = state.tasks.findIndex((task) => task.status === newStatus);
+        if (firstStatusIndex === -1) {
+          state.tasks.push(movedTask);
+        } else {
+          state.tasks.splice(firstStatusIndex, 0, movedTask);
+        }
       }
     },
 
@@ -234,7 +257,7 @@ const kanbanSlice = createSlice({
 
       // Add Task - Success
       .addCase(addKanbanTask.fulfilled, (state, action) => {
-        state.tasks.push(action.payload);
+        state.tasks.unshift(action.payload);
         state.modalOpen = false;
         state.editingTask = null;
       })

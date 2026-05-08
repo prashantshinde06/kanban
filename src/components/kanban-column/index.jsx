@@ -18,14 +18,12 @@ const KanbanColumn = ({ status, title, tasks }) => {
     e.dataTransfer.setData("sourceStatus", task.status);
   };
 
-  const handleDrop = (e, dropIndex) => {
+  const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
-    const taskId = parseInt(e.dataTransfer.getData("taskId"));
-    const sourceStatus = e.dataTransfer.getData("sourceStatus");
 
-    // Move task to new status
+    const taskId = parseInt(e.dataTransfer.getData("taskId"));
+
     dispatch(moveTask({ taskId, newStatus: status }));
     setDragOverIndex(null);
   };
@@ -49,7 +47,7 @@ const KanbanColumn = ({ status, title, tasks }) => {
       <div
         className="kanban-column__content"
         onDragOver={handleDragOver}
-        onDrop={(e) => handleDrop(e, tasks.length)}
+        onDrop={handleDrop}
       >
         {tasks.length === 0 ? (
           <div className="kanban-column__empty">
@@ -63,7 +61,7 @@ const KanbanColumn = ({ status, title, tasks }) => {
               onDragEnter={(e) => handleDragEnter(e, index)}
               onDragLeave={handleDragLeave}
               onDragOver={handleDragOver}
-              onDrop={(e) => handleDrop(e, index)}
+              onDrop={handleDrop}
             >
               <TaskCard
                 task={task}
